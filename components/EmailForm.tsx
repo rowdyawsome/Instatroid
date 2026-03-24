@@ -69,6 +69,7 @@ export default function EmailForm() {
           className="w-full h-12 px-4 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500"
         >
           <option value="welcome">Welcome Email</option>
+          <option value="download">Download Email</option>
         </select>
 
         <button
