@@ -11,7 +11,6 @@ export default function EmailForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     setLoading(true);
     setMessage(null);
 
@@ -31,7 +30,6 @@ export default function EmailForm() {
       } else {
         setMessage({ type: 'error', text: data.message });
       }
-
     } catch {
       setMessage({ type: 'error', text: 'Something went wrong.' });
     }
@@ -53,7 +51,6 @@ export default function EmailForm() {
           required
           className="w-full h-12 px-4 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500"
         />
-
         <input
           type="email"
           placeholder="Recipient Email"
@@ -62,14 +59,14 @@ export default function EmailForm() {
           required
           className="w-full h-12 px-4 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500"
         />
-
         <select
           value={template}
           onChange={(e) => setTemplate(e.target.value)}
           className="w-full h-12 px-4 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-500"
         >
           <option value="welcome">Welcome Email</option>
-          <option value="download">Download Email</option>
+          <option value="download">Download Email (reCAPTCHA)</option>
+          <option value="direct-download">Download Email (Direct Link)</option>
         </select>
 
         <button
@@ -82,11 +79,7 @@ export default function EmailForm() {
       </form>
 
       {message && (
-        <div
-          className={`mt-4 text-center font-medium ${
-            message.type === 'success' ? 'text-green-600' : 'text-red-600'
-          }`}
-        >
+        <div className={`mt-4 text-center font-medium ${message.type === 'success' ? 'text-green-600' : 'text-red-600'}`}>
           {message.text}
         </div>
       )}
